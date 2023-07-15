@@ -1,4 +1,5 @@
-# PHASE 2 PROJECT – LINEAR REGRESSION
+# FLATIRON SCHOOL PHASE 2 PROJECT
+*Angelo Turri*
 
 ## Stakeholder & Problem
 A real estate company, BlackSock, is looking to invest in King County houses. Their plan is to buy these homes, rent them out for a duration of time, and then sell them after their value increases a satisfactory amount. To maximize profits, this company wants information on several factors that influence the price of such homes.
@@ -39,7 +40,7 @@ Linear regression is a modeling technique that allows us to understand relations
 
 - Our modeling technique, linear regression, has certain standards for data that should be adequately met. In order to do this, we had to eliminate some data that did not adequately satisfy these standards. This included data that:
     - Did not have a linear relationship with the price variable;
-    - Was collinear (independent variables that had a correlation coefficient of 0.7 or more with each other
+    - Was collinear (independent variables that had a correlation coefficient of 0.7 or more with each other)
 
 - There were some outliers in our data (houses that cost over 10 million dollars, etc). Such outliers can skew our data and thus harm our model's accuracy. To avoid this, I eliminated these outliers.
 
@@ -49,7 +50,7 @@ Linear regression is a modeling technique that allows us to understand relations
 
 ## Feature Engineering
 
-Our initial dataset had a limited range of variables which I could use in the model. I created a number of new variables based on the data I had in the hope that some of them would contribute to the model's accuracy. Only one of them did; it was a variable called "vicinity_price". This variable measured the average price of homes in a particular house's vicinity (we used latitude/longitude to determine the vicinity). Each particular house that we examined was eliminated from the average, to avoid a house predicting its own price.
+Our initial dataset had a limited range of variables which I could use in the model. Using existing data, I created a number of new variables in the hope that some of them would significantly contribute to the model's accuracy. Only one of them did; it was a variable called "vicinity_price". This variable measured the average price of homes in a particular house's vicinity (we used latitude/longitude to determine the vicinity). Each particular house that we examined was eliminated from the average, to avoid a house predicting its own price.
 
 ## Modeling
 
@@ -57,10 +58,29 @@ I used an iterative modeling technique – that is, I started with a basic model
 
 I used several visualizations and model metrics to analyze model performance. One important visualization I used was a scatterplot of the original price values vs. the price values that our model predicted for each house. This graph shows how close the model's predicted values are to the real ones. Another important visualization was a residual histogram. "Residuals" are the magnitude of your model's prediction errors. These residuals are supposed to be normally distributed, and this histogram shows you if they are.
 
-As for model metrics, I used the adjusted R-Squared and the Mean Absolute Error (MAE). The adjusted R-Squared value is a measure of how well your model fits the actual data. The close to 1 that it, the better your model fits the data. The MAE is how much your model's predictions typically deviate from the real values.
+As for model metrics, I used the adjusted R-Squared and the Mean Absolute Error (MAE). The adjusted R-Squared value is a measure of how well your model fits the actual data. The closer to 1 that it is, the better your model fits the data. The MAE is how much your model's predictions typically deviate from the real values.
 
 
 ## Model interpretation
+
+The variables used in our final model were vicinity_price, grade, and sqft_living.
+- Vicinity_price: the average price of surrounding homes for each individual house.
+- Grade: a numerical variable ranging from 1 to 13 measuring the quality of the home. These are the meanings for the values:
+    - 1: Cabin
+    - 2: Substandard
+    - 3: Poor
+    - 4: Low
+    - 5: Fair
+    - 6: Low average
+    - 7: Average
+    - 8: Good
+    - 9: Better
+    - 10: Very good
+    - 11: Excellent
+    - 12: Luxury
+    - 13: Mansion
+- Although the grade variable was initially a categorical variable, it had all the properties of a numerical variable. The median value on this scale (7) represented an average grade, which is exactly right. Each increase in grade seems to represent a similar increase in home quality. And finally, the average grade of all the houses in the dataset was 7.7, which is very close to an "average" grade – exactly as you'd expect.
+- Sqft_living: the square footage of living space in the home.
 
 Our model yielded the following insights:
 
@@ -76,3 +96,8 @@ On average, our model's predictions were off by about $222,000. The model had an
 Based on this model, we recommend that BlackSock look at properties whose area is likely to go up in value. We also recommend that they rennovate the house if doing so results in an increase in grade and the cost of doing so is less than $85,000.
 
 Finally, we recommend that BlackSock consult other models in addition to ours. Although our model had reasonably good metrics, they weren't good enough to inform huge investments on their own. However, we still think our model yielded useful insights and that BlackSock should take them into account.
+
+## Repository Structure
+- **[data](https://github.com/Jellohub/phase2_project/tree/master/data)**: folder containing data file and and descriptions of variables.
+- **[Notebook.ipyb](https://github.com/Jellohub/phase2_project/blob/master/Notebook.ipynb)**: project notebook containing all data imports, cleanup, analyses, and visualizations
+- **[visualizations](https://github.com/Jellohub/phase2_project/tree/master/visualizations)**: folder containing all visualizations used in the project notebook and presentation
