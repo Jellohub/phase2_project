@@ -101,3 +101,4 @@ Finally, we recommend that BlackSock consult other models in addition to ours. A
 - **[data](https://github.com/Jellohub/phase2_project/tree/master/data)**: folder containing data file and and descriptions of variables.
 - **[Notebook.ipyb](https://github.com/Jellohub/phase2_project/blob/master/Notebook.ipynb)**: project notebook containing all data imports, cleanup, analyses, and visualizations
 - **[visualizations](https://github.com/Jellohub/phase2_project/tree/master/visualizations)**: folder containing all visualizations used in the project notebook and presentation
+- **[presentation](https://github.com/Jellohub/phase2_project/tree/master/presentation.pdf)**: pdf file with all presentation slides
