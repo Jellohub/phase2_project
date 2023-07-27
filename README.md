@@ -23,6 +23,9 @@ Important variables from the original dataset include:
 - the latitude & longitude
 - address
 
+This is how the price variable was distributed in the dataset. Most prices were between $300,000 and $2 million dollars.
+![House price distribution](/visualizations/price.png)
+
 ## Rationale
 BlackSock is looking for insights into what impacts home price; these insights are meant to inform their long-term investment decisions. I am using linear regression to give BlackSock the insights they want.
 
@@ -37,6 +40,8 @@ Linear regression is a modeling technique that allows us to understand relations
 - Our data has the most important home properties, but it lacks many others; for example, it does not record brick color, type of flooring, the inclusion of a house water filter, ceiling style, etc. Furthermore, it only covers sales in one year. A model is only as good as the data you put into it; as such, our model can only give preliminary insights. While we recommend that BlackSock heed our model's results, we also recommend they utilize other models in conjunction with ours and refrain from making any major investment decisions based on our model alone.
 
 ## Data Cleaning
+
+**All visualizations in this README were made on the cleaned dataset.**
 
 - Our modeling technique, linear regression, has certain standards for data that should be adequately met. In order to do this, we had to eliminate some data that did not adequately satisfy these standards. This included data that:
     - Did not have a linear relationship with the price variable;
@@ -61,7 +66,7 @@ I used several visualizations and model metrics to analyze model performance. On
 As for model metrics, I used the adjusted R-Squared and the Mean Absolute Error (MAE). The adjusted R-Squared value is a measure of how well your model fits the actual data. The closer to 1 that it is, the better your model fits the data. The MAE is how much your model's predictions typically deviate from the real values.
 
 
-## Model interpretation
+## Variable selection
 
 The variables used in our final model were vicinity_price, grade, and sqft_living.
 - Vicinity_price: the average price of surrounding homes for each individual house.
@@ -82,6 +87,12 @@ The variables used in our final model were vicinity_price, grade, and sqft_livin
 - Although the grade variable was initially a categorical variable, it had all the properties of a numerical variable. The median value on this scale (7) represented an average grade, which is exactly right. Each increase in grade seems to represent a similar increase in home quality. And finally, the average grade of all the houses in the dataset was 7.7, which is very close to an "average" grade – exactly as you'd expect.
 - Sqft_living: the square footage of living space in the home.
 
+![Scatterplot of sqft_living vs price](/visualizations/scatter2.png)
+![Scatterplot of grade vs price](/visualizations/scatter3.png)
+![Scatterplot of vicinity_price vs price](/visualizations/scatter1.png)
+
+
+## Model interpretation
 Our model yielded the following insights:
 
 - A house in King County surrounded by average-priced homes, with an average grade, and average living space, costs about $1.1 million.
@@ -90,6 +101,13 @@ Our model yielded the following insights:
 - Every additional square foot of living space increases house price by $260.
 
 On average, our model's predictions were off by about $222,000. The model had an adjusted R-Squared of 0.735 which means it was a reasonably good fit for the data.
+
+Here are the OLS regression results for our final model.
+![OLS regression results](/visualizations/ols.png)
+
+Here are some of the visualizations we used to evaluate the performance of the final model.
+![Model metric visualizations](/visualizations/modelmetrics.png)
+
 
 ## Recommendations
 
