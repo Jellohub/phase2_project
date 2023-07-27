@@ -57,6 +57,9 @@ Linear regression is a modeling technique that allows us to understand relations
 
 Our initial dataset had a limited range of variables which I could use in the model. Using existing data, I created a number of new variables in the hope that some of them would significantly contribute to the model's accuracy. Only one of them did; it was a variable called "vicinity_price". This variable measured the average price of homes in a particular house's vicinity (we used latitude/longitude to determine the vicinity). Each particular house that we examined was eliminated from the average, to avoid a house predicting its own price.
 
+Below is a visual demonstration of how we created the vicinity_price variable. The blue dot is a random house in the dataset; the red dots are the surrounding houses. We only included the red dots in our average, to avoid houses predicting their own price in the model.
+![vicinity_price visual demonstration](/visualizations/vicinity_price.png)
+
 ## Modeling
 
 I used an iterative modeling technique – that is, I started with a basic model and made adjustments from there. My first model only included the vicinity_price variable. My second included the grade and sqft_living variables. My third included all the same variables but I transformed them to make the model more interpretable – that is, I wanted the results of the model to make more sense to a layperson.
@@ -87,9 +90,10 @@ The variables used in our final model were vicinity_price, grade, and sqft_livin
 - Although the grade variable was initially a categorical variable, it had all the properties of a numerical variable. The median value on this scale (7) represented an average grade, which is exactly right. Each increase in grade seems to represent a similar increase in home quality. And finally, the average grade of all the houses in the dataset was 7.7, which is very close to an "average" grade – exactly as you'd expect.
 - Sqft_living: the square footage of living space in the home.
 
-![Scatterplot of sqft_living vs price](/visualizations/scatter2.png)
-![Scatterplot of grade vs price](/visualizations/scatter3.png)
-![Scatterplot of vicinity_price vs price](/visualizations/scatter1.png)
+Each of these variables had strong linear relationships with house price, which made them good candidates for the model. Here are some scatterplots of these variables plotted against price:
+![Scatterplot of vicinity_price vs. price](/visualizations/scatter1.png)
+![Scatterplot of sqft_living vs. price](/visualizations/scatter2.png)
+![Scatterplot of grade vs. price](/visualizations/scatter3.png)
 
 
 ## Model interpretation
